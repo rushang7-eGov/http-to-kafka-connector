@@ -1,0 +1,9 @@
+FROM node:8.11-alpine
+RUN apk update \
+    && apk add zip \
+    && mkdir -p /opt/data
+ADD src /opt/data/
+WORKDIR /opt/data/
+RUN npm install
+WORKDIR /opt
+CMD ["zip", "-r", "push-to-kafka.zip", "data"]
