@@ -9,9 +9,6 @@ class DispatcherService {
         this.kafkaDispatcher = new KafkaDispatcher(config);
     }
     dispatch(req, res) {
-        if(config.authenticationEnabled === 'true')
-            this.authenticate(req, res);
-
         const message = {};
 
         message.method = req.method;
@@ -29,10 +26,6 @@ class DispatcherService {
         const data = JSON.stringify(message);
 
         this.kafkaDispatcher.dispatch(messageKey, data, this.getRequestCallBack(req, res));
-    }
-
-    authenticate(req, res) {
-
     }
     
     health(req, res) {

@@ -10,12 +10,6 @@ const envVariables = {
     keyForEachMessage : process.env.keyPath || '$.sender.from',                //In request body, single value
 
     port: process.env.service_port || 9001,
-    endPoint : process.env.endPoint || '/whatsapp/messages',
-
-    authenticationEnabled : process.env.authenticationEnabled || 'false',
-    apiKey : process.env.apiKey || '',
-    apiSecret : process.env.apiSecret || '',
-
-    threads: process.env.service_threads || os.cpus().length
+    endPoint : process.env.endPoint || '/whatsapp/messages'
 }
 module.exports = envVariables;
