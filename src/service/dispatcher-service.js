@@ -1,5 +1,4 @@
-const request = require('request'),
-    JSONPath = require('JSONPath'),
+const JSONPath = require('JSONPath'),
     KafkaDispatcher = require('../dispatcher/kafka-dispatcher').KafkaDispatcher,
     config = require('../envVariables')
 
@@ -15,12 +14,11 @@ class DispatcherService {
         message.headers = req.headers;    
         message.body = req.body;
         message.queryParams = req.query;
+        message.url = req.protocol + '://' + req.get('host') + req.originalUrl;
         
         var messageKey = undefined;
         if(config.keyForEachMessage) {
-            const values = JSONPath({json: message.body, path : config.keyForEachMessage, callback : () => {}});
-            if(values instanceof Array)
-                messageKey = values[0];
+            messageKey = JSONPath({json: message.body, path : config.keyForEachMessage, callback : () => {}})[0];
         } 
 
         const data = JSON.stringify(message);
