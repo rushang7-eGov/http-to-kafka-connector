@@ -24,4 +24,4 @@ const app = express();
 }
 
 const app = createAppServer();
-app.listen(port, () => console.log(`push-to-kafka is running on port ${envVariables.port} from endPoint ${envVariables.endPoint} to topic ${envVariables.topic} with ${process.pid} pid`));
+app.listen(port, () => console.log(`http-to-kafka is running on port ${envVariables.port} from endPoint ${envVariables.endPoint} to topic ${envVariables.topic} with ${process.pid} pid`));

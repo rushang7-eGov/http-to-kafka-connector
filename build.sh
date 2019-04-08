@@ -14,6 +14,6 @@ version=$(e "${m}" "version")
 docker build -f ./Dockerfile.Build -t ${org}/${name}:${version}-build . 
 docker run --name=${name}-${version}-build ${org}/${name}:${version}-build 
 containerid=`docker ps -aqf "name=${name}-${version}-build"`
-docker cp $containerid:/opt/push-to-kafka.zip push-to-kafka.zip
+docker cp $containerid:/opt/http-to-kafka.zip http-to-kafka.zip
 docker rm $containerid
-docker build -f ./Dockerfile -t ${org}/${name}:${version}-bronze .
+docker build -f ./Dockerfile -t ${org}/${name}:${version} .

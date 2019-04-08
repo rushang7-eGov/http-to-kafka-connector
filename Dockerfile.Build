@@ -6,4 +6,4 @@ ADD src /opt/data/
 WORKDIR /opt/data/
 RUN npm install
 WORKDIR /opt
-CMD ["zip", "-r", "push-to-kafka.zip", "data"]
+CMD ["zip", "-r", "http-to-kafka.zip", "data"]
