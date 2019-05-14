@@ -13,7 +13,7 @@ const app = express();
         if (req.method === 'OPTIONS') res.sendStatus(200)
         else next()
     })
-    app.use(bodyParser.json({ limit: '1mb' }));
+    app.use(bodyParser.json({ limit: '10mb' }));
     // app.use(logger('dev'));
     app.use(express.json());
     app.use(bodyParser.urlencoded({ extended: false }));

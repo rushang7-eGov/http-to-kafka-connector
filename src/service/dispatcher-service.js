@@ -8,6 +8,8 @@ class DispatcherService {
         this.kafkaDispatcher = new KafkaDispatcher(config);
     }
     dispatch(req, res) {
+        console.log('Received Request : ' + JSON.stringify(req.body));
+
         const message = {};
 
         message.method = req.method;
@@ -15,6 +17,7 @@ class DispatcherService {
         message.body = req.body;
         message.queryParams = req.query;
         message.url = req.protocol + '://' + req.get('host') + req.originalUrl;
+        message.timestamp = Date.now();
         
         var messageKey = undefined;
         if(config.keyForEachMessage) {

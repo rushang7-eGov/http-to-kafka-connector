@@ -1,13 +1,16 @@
-const kafka = require('kafka-node'),
+const winston = require('winston'),
+    kafka = require('kafka-node'),
     _ = require('lodash'),
     HighLevelProducer = kafka.HighLevelProducer;
 
-class KafkaDispatcher {
+class KafkaDispatcher extends winston.Transport {
     constructor(options) {
+        super();
         this.name = 'kafka';
         this.options = options;
         this.client = new kafka.KafkaClient({
-            kafkaHost: this.options.kafkaHost
+            kafkaHost: this.options.kafkaHost,
+            maxAsyncRequests: this.options.maxAsyncRequests
         })
         this.producer = new HighLevelProducer(this.client);
         this.producer.on('ready', () => console.log('kafka dispatcher is ready'));
