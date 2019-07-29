@@ -9,6 +9,7 @@ const envVariables = {
     maxAsyncRequests: 100,
     keyForEachMessage : process.env.keyPath || '$.eventContent.message.from',      //In request body, single value
 
+    contextPath: process.env.contextPath || '/whatsapp-webhook',
     port: process.env.service_port || 9001,
     endPoint : process.env.endPoint || '/whatsapp/messages'
 }

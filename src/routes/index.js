@@ -3,8 +3,8 @@ const express = require('express'),
     config = require('../envVariables'),
     dispatcherService = require('../service/dispatcher-service');
 
-router.post(config.endPoint, (req, res) => { dispatcherService.dispatch(req, res); });
+router.post(config.contextPath + config.endPoint, (req, res) => { dispatcherService.dispatch(req, res); });
 
-router.get('/health', (req, res) => dispatcherService.health(req, res));
+router.get(config.contextPath + '/health', (req, res) => dispatcherService.health(req, res));
 
 module.exports = router;
