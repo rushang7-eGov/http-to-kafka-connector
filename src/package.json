@@ -1,7 +1,7 @@
 {
     "name": "http-to-kafka",
     "version": "1.0.3",
-    "description": "Push request body to kafka topic",
+    "description": "Push http request to kafka topic",
     "main": "app.js",
     "scripts": {
         "start": "node app.js",
