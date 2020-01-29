@@ -7,7 +7,7 @@ const envVariables = {
     kafkaHost: process.env.KAFKA_BROKER_LIST || 'localhost:9092',
     topic: process.env.KAFKA_TOPIC || 'whatsapp-received-messages',
     maxAsyncRequests: 100,
-    keyForEachMessage : process.env.KAFKA_KEY_JSONPATH || '$.eventContent.message.from',      //In request body, single value
+    keyForEachMessage : process.env.KAFKA_KEY_JSONPATH || undefined,      //In request body, single value
 
     contextPath: process.env.SERVER_CONTEXT_PATH || '/whatsapp-webhook',
     port: process.env.SERVER_PORT || 9001,

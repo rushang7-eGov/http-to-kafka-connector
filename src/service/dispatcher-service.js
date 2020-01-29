@@ -21,7 +21,7 @@ class DispatcherService {
         
         var messageKey = undefined;
         if(config.keyForEachMessage) {
-            messageKey = JSONPath({json: message.body, path : config.keyForEachMessage, callback : () => {}})[0];
+            messageKey = JSONPath({json: message, path : config.keyForEachMessage, callback : () => {}})[0];
         } 
 
         const data = JSON.stringify(message);
