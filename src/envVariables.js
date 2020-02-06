@@ -11,6 +11,8 @@ const envVariables = {
 
     contextPath: process.env.SERVER_CONTEXT_PATH || '/whatsapp-webhook',
     port: process.env.SERVER_PORT || 9001,
-    endPoint : process.env.ENDPOINT || '/whatsapp/messages'
+    endPoint : process.env.ENDPOINT || '/messages',
+
+    httpMethods : process.env.SUPPORTED_HTTP_METHODS || "GET, POST"
 }
 module.exports = envVariables;

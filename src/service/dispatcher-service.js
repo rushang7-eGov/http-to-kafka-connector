@@ -8,7 +8,6 @@ class DispatcherService {
         this.kafkaDispatcher = new KafkaDispatcher(config);
     }
     dispatch(req, res) {
-        console.log('Received Request : ' + JSON.stringify(req.body));
 
         const message = {};
 
@@ -25,6 +24,8 @@ class DispatcherService {
         } 
 
         const data = JSON.stringify(message);
+
+        console.log('Received Request : ' + JSON.stringify(message));
 
         this.kafkaDispatcher.dispatch(messageKey, data, this.getRequestCallBack(req, res));
     }

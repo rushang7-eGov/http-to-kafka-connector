@@ -1,0 +1,46 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: http-to-kafka
+  name: http-to-kafka
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: http-to-kafka
+    spec:
+      containers:
+      - env:
+        - name: KAFKA_BROKER_LIST
+          value: "kafka-cluster-cp-kafka.kafka-cluster:9092"
+        - name: KAFKA_TOPIC
+          value: "conductorTopic"
+        - name: SERVER_PORT
+          value: "8080"
+        image: rushang7/http-to-kafka:1.0.3
+        name: http-to-kafka
+        ports:
+        - containerPort: 8080
+        resources: {}
+      restartPolicy: Always
+status: {}
+
+--- 
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: http-to-kafka
+  name: http-to-kafka
+spec:
+  ports:
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: http-to-kafka
+
